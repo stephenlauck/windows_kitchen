@@ -6,17 +6,52 @@ driver:
 
 provisioner:
   name: chef_zero
+  chef_metadata_url: 'https://www.chef.io/chef/metadata?p=windows&m=x86_64&pv=2012r2'
 
 transport:
   name: winrm
 
+<% 
+windows_list = %( 
+  opentable/win-7-professional-amd64-nocm
+  opentable/win-2012r2-standard-amd64-nocm
+  opentable/win-2008r2-standard-amd64-nocm
+) 
+%>
+
 platforms:
   - name: opentable/win-2012r2-standard-amd64-nocm
+    os_type: windows
+    shell_type: powershell
     driver:
       box: opentable/win-2012r2-standard-amd64-nocm
       box_url: https://atlas.hashicorp.com/opentable/boxes/win-2012r2-standard-amd64-nocm
       network:
         - ['private_network', {ip: '33.33.33.30'}]
+      customize:
+        cpus: 2
+        memory: 2048
+
+  - name: opentable/win-2008r2-standard-amd64-nocm
+    os_type: windows
+    shell_type: powershell
+    driver:
+      box: opentable/win-2008r2-standard-amd64-nocm
+      box_url: https://atlas.hashicorp.com/opentable/boxes/win-2008r2-standard-amd64-nocm
+      network:
+        - ['private_network', {ip: '33.33.33.31'}]
+      customize:
+        cpus: 2
+        memory: 2048
+
+  - name: opentable/win-7-professional-amd64-nocm
+    os_type: windows
+    shell_type: powershell
+    driver:
+      box: opentable/win-7-professional-amd64-nocm
+      box_url: https://atlas.hashicorp.com/opentable/boxes/win-7-professional-amd64-nocm
+      network:
+        - ['private_network', {ip: '33.33.33.32'}]
       customize:
         cpus: 2
         memory: 2048

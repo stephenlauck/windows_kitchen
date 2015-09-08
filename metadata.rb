@@ -1,0 +1,7 @@
+name 'windows_kitchen'
+maintainer 'The Authors'
+maintainer_email 'you@example.com'
+license 'all_rights'
+description 'Installs/Configures windows_kitchen'
+long_description 'Installs/Configures windows_kitchen'
+version '0.1.0'

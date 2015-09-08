@@ -1,0 +1,30 @@
+---
+driver:
+  name: vagrant
+  gui: true
+  forward_agent: yes
+
+provisioner:
+  name: chef_zero
+
+transport:
+  name: winrm
+
+platforms:
+  - name: opentable/win-2012r2-standard-amd64-nocm
+    driver:
+      box: opentable/win-2012r2-standard-amd64-nocm
+      box_url: https://atlas.hashicorp.com/opentable/boxes/win-2012r2-standard-amd64-nocm
+      network:
+        - ['private_network', {ip: '33.33.33.30'}]
+      customize:
+        cpus: 2
+        memory: 2048
+
+suites:
+  - name: default
+    run_list:
+      - recipe[windows_kitchen::default]
+    attributes:
+
+

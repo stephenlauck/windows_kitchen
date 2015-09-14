@@ -1,4 +1,5 @@
 # windows_kitchen
 
-TODO: Enter the cookbook description here.
+### list all available windows machines in test-kitchen
+`kitchen list`
 
